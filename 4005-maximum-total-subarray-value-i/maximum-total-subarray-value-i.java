@@ -1,8 +1,12 @@
 class Solution {
     public long maxTotalValue(int[] nums, int k) {
-        Long max = Arrays.stream(nums).mapToLong(i -> i).max().getAsLong();
-        Long min = Arrays.stream(nums).mapToLong(i -> i).min().getAsLong();
-        Long sub = max - min;
-        return sub*(long)k;
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+
+        for (int num : nums) {
+            min = Math.min(min, num);
+            max = Math.max(max, num);
+        }
+        return (long) k * (max - min);
     }
 }
